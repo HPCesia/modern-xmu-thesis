@@ -1,0 +1,13 @@
+[package]
+name = "modern-xmu-thesis"
+version = "0.0.1"
+entrypoint = "lib.typ"
+authors = ["HPCesia"]
+license = "MIT"
+description = "厦门大学学位论文模板。Modern Xiamen University Thesis."
+keywords = ["Xiamen University", "thesis"]
+categories = ["thesis"]
+
+[template]
+path = "template"
+entrypoint = "thesis.typ"
