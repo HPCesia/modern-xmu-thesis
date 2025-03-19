@@ -1,6 +1,7 @@
 
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
+#import "layouts/mainmatter.typ": mainmatter
 #import "pages/bachelor-cover.typ": bachelor-cover
 #import "pages/bachelor-integrity.typ": bachelor-integrity
 #import "pages/bachelor-abstract.typ": bachelor-abstract
@@ -45,6 +46,9 @@
     },
     preface: (..args) => {
       preface(twoside: twoside, ..args)
+    },
+    mainmatter: (..args) => {
+      mainmatter(twoside: twoside, ..args)
     },
     // 封面页
     cover: (..args) => bachelor-cover(

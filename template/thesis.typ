@@ -6,6 +6,7 @@
   twoside,
   doc,
   preface,
+  mainmatter,
   // 页面函数
   cover,
   integrity,
@@ -80,3 +81,10 @@
 
   It is recommended to fully browse all the content in this template before use to fully understand how to use the template and the basic usage of Typst.
 ]
+
+// TODO: 中文目录页
+
+// TODO: 英文目录页
+
+// ====== 正文部分 ======
+#show: mainmatter
