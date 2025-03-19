@@ -4,6 +4,7 @@
 #import "pages/bachelor-cover.typ": bachelor-cover
 #import "pages/bachelor-integrity.typ": bachelor-integrity
 #import "pages/bachelor-abstract.typ": bachelor-abstract
+#import "pages/bachelor-abstract-en.typ": bachelor-abstract-en
 #import "utils/style.typ": 字体, 字号
 
 // 使用函数闭包特性，通过 `documentclass` 函数类进行全局信息配置，然后暴露出拥有了全局配置的、具体的 `layouts` 和 `templates` 内部函数。
@@ -60,6 +61,12 @@
     ),
     // 中文摘要页
     abstract: (..args) => bachelor-abstract(
+      twoside: twoside,
+      ..args,
+      fonts: fonts + args.named().at("fonts", default: (:)),
+    ),
+    // 英文摘要页
+    abstract-en:(..args) => bachelor-abstract-en(
       twoside: twoside,
       ..args,
       fonts: fonts + args.named().at("fonts", default: (:)),

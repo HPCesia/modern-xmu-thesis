@@ -60,4 +60,17 @@
     "Heiti SC",
     "STHeiti",
   ),
+
+  // 由于 `latin-in-cjk` 不包含英文中的引号，导致引号为中文字形，故单独提供英文字体
+  宋体-英文: (
+    "Times New Roman"
+  ),
+  黑体-英文: (
+    "Arial"
+  ),
+  等宽-英文: (
+    "Courier New",
+    "Menlo",
+    "IBM Plex Mono",
+  ),
 )

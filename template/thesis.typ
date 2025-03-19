@@ -10,6 +10,7 @@
   cover,
   integrity,
   abstract,
+  abstract-en,
 ) = documentclass(
   twoside: true, // 双面模式，会加入空白页，便于打印
   info: (
@@ -59,4 +60,20 @@
   自带黑体/宋体的优先级使用编译环境中存在的字体。
 
   建议使用前先完整浏览本模板中的所有内容，以完整地了解使用模板的方法与 Typst 的基础用法。
+]
+
+// 英文摘要
+
+#abstract-en(
+  keywords: ("Undergraduate Thesis", "Xiamen University", "Typst"),
+  outlined: true,
+  outline-title: "Abstract",
+)[
+  #import "@preview/metalogo:1.2.0": LaTeX
+
+  This template is based on #link("https://github.com/nju-lug/modern-nju-thesis")[Modern NJU Thesis Template] and #link("https://github.com/F5Soft/xmu-template")[Xiamen University Undergraduate Thesis #LaTeX Template], and is created according to the _Xiamen University Undergraduate Thesis (Design) Specification_.
+
+  This template provides high-resolution cover, integrity commitment letter, Chinese and English abstract environments, automatic generation of Chinese and English tables of contents, appendix environment, reference environment, acknowledgment environment, etc. Through Typst's font fallback feature, this template adapts fonts for Windows and macOS systems, using Source Han Sans/Serif, Windows built-in Sans/Serif, and macOS built-in Sans/Serif fonts in order of priority based on what fonts are available in the compilation environment.
+
+  It is recommended to fully browse all the content in this template before use to fully understand how to use the template and the basic usage of Typst.
 ]
