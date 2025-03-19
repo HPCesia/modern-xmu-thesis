@@ -1,4 +1,4 @@
-// 取自 modern-nju-thesis
+// 部分取自 modern-nju-thesis
 
 #let 字号 = (
   初号: 42pt,
@@ -60,17 +60,16 @@
     "Heiti SC",
     "STHeiti",
   ),
-
-  // 由于 `latin-in-cjk` 不包含英文中的引号，导致引号为中文字形，故单独提供英文字体
-  宋体-英文: (
-    "Times New Roman"
-  ),
-  黑体-英文: (
-    "Arial"
-  ),
-  等宽-英文: (
-    "Courier New",
-    "Menlo",
-    "IBM Plex Mono",
-  ),
 )
+
+// 获取字体中的英文部分，选取带有 `covers = "latin-in-cjk"` 的字体
+//
+// - fonts (array): 字体列表，与 typst 内建 `text` 函数中的 `font` 参数接受相同的数组，但不接受字符串
+// -> array
+#let 英文(fonts) = {
+  assert.eq(type(fonts), array, message: "fonts 必须为数组")
+  return fonts
+    .filter(font => type(font) == dictionary)
+    .filter(font => font.covers == "latin-in-cjk")
+    .map(font => font.name)
+}

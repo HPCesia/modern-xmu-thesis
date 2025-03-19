@@ -1,4 +1,4 @@
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字号, 字体, 英文
 #import "../utils/invisible-heading.typ": invisible-heading
 
 // 本科生英文摘要页
@@ -23,18 +23,18 @@
   invisible-heading(level: 1, outlined: outlined, outline-title)
 
   v(spacing)
-  align(center, text(size: 字号.小三, font: fonts.宋体-英文, weight: "bold")[Abstract])
+  align(center, text(size: 字号.小三, font: 英文(fonts.宋体), weight: "bold")[Abstract])
   v(spacing*2)
 
   [
     #set par(first-line-indent: (amount: 2em, all: true), leading: leading, spacing: spacing)
-    #set text(size: 字号.小四, font: fonts.宋体-英文)
+    #set text(size: 字号.小四, font: 英文(fonts.宋体))
 
     #body
   ]
 
   v(spacing)
 
-  text(size: 字号.小四, font: fonts.宋体-英文, weight: "bold")[Key Words: ]
-  text(size: 字号.小四, font: fonts.宋体-英文, (("",) + keywords.intersperse("; ")).sum())
+  text(size: 字号.小四, font: 英文(fonts.宋体), weight: "bold")[Key Words: ]
+  text(size: 字号.小四, font: 英文(fonts.宋体), (("",) + keywords.intersperse("; ")).sum())
 }
