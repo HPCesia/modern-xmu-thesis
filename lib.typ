@@ -42,13 +42,25 @@
     info: info,
     // 页面布局
     doc: (..args) => {
-      doc(..args, info: info + args.named().at("info", default: (:)))
+      doc(
+        ..args,
+        info: info + args.named().at("info", default: (:)),
+      )
     },
     preface: (..args) => {
-      preface(twoside: twoside, ..args)
+      preface(
+        twoside: twoside,
+        ..args,
+        fonts: fonts + args.named().at("fonts", default: (:)),
+      )
     },
     mainmatter: (..args) => {
-      mainmatter(twoside: twoside, ..args)
+      mainmatter(
+        twoside: twoside,
+        ..args,
+        info: info + args.named().at("info", default: (:)),
+        fonts: fonts + args.named().at("fonts", default: (:)),
+      )
     },
     // 封面页
     cover: (..args) => bachelor-cover(

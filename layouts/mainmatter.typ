@@ -45,10 +45,8 @@
   it,
 ) = {
   // 0.  标志前言结束
-  set page(numbering: none)
+  set page(footer: none)
   pagebreak(weak: true, to: if twoside { "odd" })
-  set page(numbering: "1")
-  counter(page).update(1)
 
   // 1.  默认参数
   fonts = 字体 + fonts
@@ -163,5 +161,10 @@
     },
   ))
 
+  set page(footer: context {
+    set text(font: fonts.宋体, size: 字号.小五)
+    align(center, counter(page).display("1"))
+  })
+  counter(page).update(1)
   it
 }
