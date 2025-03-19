@@ -33,12 +33,18 @@
 
 #show: doc
 
+// 封面页
 #cover()
 
+// 诚信承诺书
 #integrity()
 
+// ====== 前言 ======
 #show: preface
 
+// TODO: 致谢
+
+// 中文摘要
 #abstract(
   keywords: ("本科毕业论文", "厦门大学", "Typst"),
   outlined: true,
