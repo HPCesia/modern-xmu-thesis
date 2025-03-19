@@ -2,6 +2,7 @@
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
 #import "pages/bachelor-cover.typ": bachelor-cover
+#import "pages/bachelor-integrity.typ": bachelor-integrity
 #import "utils/style.typ": 字体, 字号
 
 // 使用函数闭包特性，通过 `documentclass` 函数类进行全局信息配置，然后暴露出拥有了全局配置的、具体的 `layouts` 和 `templates` 内部函数。
@@ -49,6 +50,12 @@
       ..args,
       fonts: fonts + args.named().at("fonts", default: (:)),
       info: info + args.named().at("info", default: (:)),
+    ),
+    // 诚信承诺书页
+    integrity: (..args) => bachelor-integrity(
+      twoside: twoside,
+      ..args,
+      fonts: fonts + args.named().at("fonts", default: (:)),
     ),
   )
 }

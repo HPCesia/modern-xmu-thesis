@@ -8,6 +8,7 @@
   preface,
   // 页面函数
   cover,
+  integrity,
 ) = documentclass(
   twoside: true, // 双面模式，会加入空白页，便于打印
   info: (
@@ -32,5 +33,7 @@
 #show: doc
 
 #cover()
+
+#integrity()
 
 #show: preface
