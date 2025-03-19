@@ -64,12 +64,30 @@
 
 // 获取字体中的英文部分，选取带有 `covers = "latin-in-cjk"` 的字体
 //
-// - fonts (array): 字体列表，与 typst 内建 `text` 函数中的 `font` 参数接受相同的数组，但不接受字符串
-// -> array
+// - fonts (array, str): 字体列表\
+//   接受与 typst 内建 `text` 函数中的 `font` 参数类似的数组\
+//   当传入字符串时，将直接返回该字符串\
+//   当传入的数组中不存在满足要求的元素时，将返回原数组\
+// -> array, str
 #let 英文(fonts) = {
-  assert.eq(type(fonts), array, message: "fonts 必须为数组")
-  return fonts
+  if type(fonts) == str {
+    return fonts
+  }
+  let en-fonts = fonts
     .filter(font => type(font) == dictionary)
     .filter(font => font.covers == "latin-in-cjk")
     .map(font => font.name)
+  if en-fonts.len() == 0 {
+    return fonts
+  }
+  return en-fonts
+}
+
+// 修复英文引号 `'` 和 `"` 显示为中文字形的问题
+//
+// - body (content):
+// -> content
+#let fix-smartquote(body) = context {
+  show smartquote: set text(font: 英文(text.font))
+  body
 }
