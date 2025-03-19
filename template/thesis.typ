@@ -65,6 +65,7 @@
 // 英文摘要
 
 #abstract-en(
+  twoside: false,
   keywords: ("Undergraduate Thesis", "Xiamen University", "Typst"),
   outlined: true,
   outline-title: "Abstract",
