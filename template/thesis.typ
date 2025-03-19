@@ -51,6 +51,7 @@
   outlined: true,
   outline-title: "中文摘要",
 )[
+  // 导入 LaTeX 图标
   #import "@preview/metalogo:1.2.0": LaTeX
 
   本模板参考#link("https://github.com/nju-lug/modern-nju-thesis")[南京大学学位论文模板 modern-nju-thesis]与#link("https://github.com/F5Soft/xmu-template")[厦门大学本科毕业论文 #LaTeX 模版]，并根据《厦门大学本科毕业论文（设计）规范》进行制作。
@@ -70,9 +71,10 @@
   outlined: true,
   outline-title: "Abstract",
 )[
+  // 导入 LaTeX 图标
   #import "@preview/metalogo:1.2.0": LaTeX
 
-  This template is based on #link("https://github.com/nju-lug/modern-nju-thesis")[Modern NJU Thesis Template] and #link("https://github.com/F5Soft/xmu-template")[Xiamen University Undergraduate Thesis #LaTeX Template], and is created according to the _Xiamen University Undergraduate Thesis (Design) Specification_.
+  This template is based on #link("https://github.com/nju-lug/modern-nju-thesis")[modern-nju-thesis] template and #link("https://github.com/F5Soft/xmu-template")[Xiamen University Undergraduate Thesis #LaTeX Template], and is created according to the _Xiamen University Undergraduate Thesis (Design) Specification_.
 
   This template provides high-resolution cover, integrity commitment letter, Chinese and English abstract environments, automatic generation of Chinese and English tables of contents, appendix environment, reference environment, acknowledgment environment, etc. Through Typst's font fallback feature, this template adapts fonts for Windows and macOS systems, using Source Han Sans/Serif, Windows built-in Sans/Serif, and macOS built-in Sans/Serif fonts in order of priority based on what fonts are available in the compilation environment.
 
