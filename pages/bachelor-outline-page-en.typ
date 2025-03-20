@@ -8,7 +8,7 @@
   twoside: false,
   fonts: (:),
   // 其他参数
-  depth: 4,
+  depth: 3,
   title: "Contents",
   entry-numbering: numbly("Chapter {1}", "{1}.{2}"),
   outlined: false,
