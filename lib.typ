@@ -5,6 +5,7 @@
 #import "layouts/appendix.typ": appendix
 #import "pages/bachelor-cover.typ": bachelor-cover
 #import "pages/bachelor-integrity.typ": bachelor-integrity
+#import "pages/acknowledgement.typ": acknowledgement
 #import "pages/bachelor-abstract.typ": bachelor-abstract
 #import "pages/bachelor-abstract-en.typ": bachelor-abstract-en
 #import "pages/bachelor-outline-page.typ": bachelor-outline-page
@@ -76,6 +77,12 @@
     ),
     // 诚信承诺书页
     integrity: (..args) => bachelor-integrity(
+      twoside: twoside,
+      ..args,
+      fonts: fonts + args.named().at("fonts", default: (:)),
+    ),
+    // 致谢页
+    acknowledgement: (..args) => acknowledgement(
       twoside: twoside,
       ..args,
       fonts: fonts + args.named().at("fonts", default: (:)),

@@ -11,6 +11,7 @@
   // 页面函数
   cover,
   integrity,
+  acknowledgement,
   abstract,
   abstract-en,
   outline-page,
@@ -48,7 +49,12 @@
 // ====== 前言 ======
 #show: preface
 
-// TODO: 致谢
+// 致谢
+#acknowledgement()[
+  致谢语应以简短的文字对课题研究与论文撰写过程中曾直接给予帮助的人员（例如指导教师、答疑教师及其他人员）表示自己的谢意。
+
+  如果本模板的使用对你有帮助，你也可以将其作为致谢的一部分。
+]
 
 // 中文摘要
 #abstract(
