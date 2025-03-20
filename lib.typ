@@ -9,6 +9,7 @@
 #import "pages/bachelor-abstract-en.typ": bachelor-abstract-en
 #import "pages/bachelor-outline-page.typ": bachelor-outline-page
 #import "pages/bachelor-outline-page-en.typ": bachelor-outline-page-en
+#import "pages/bilingual-bibliography.typ": bilingual-bibliography
 #import "utils/style.typ": 字体, 字号
 
 // 使用函数闭包特性，通过 `documentclass` 函数类进行全局信息配置，然后暴露出拥有了全局配置的、具体的 `layouts` 和 `templates` 内部函数。
@@ -103,5 +104,7 @@
       ..args,
       fonts: fonts + args.named().at("fonts", default: (:)),
     ),
+    // 双语参考文献页
+    bilingual-bibliography: (..args) => bilingual-bibliography(..args),
   )
 }
