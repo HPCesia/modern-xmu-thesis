@@ -70,7 +70,7 @@
             size: size.at(entry.level - 1, default: size.last()),
             weight: weight.at(entry.level - 1, default: weight.last()),
             {
-              if entry.element.numbering != none {
+              if entry.prefix() not in (none, []) and entry.element.numbering != none {
                 numbering(entry-numbering, ..counter(outline.target).at(entry.element.location()))
                 h(gap)
               }
