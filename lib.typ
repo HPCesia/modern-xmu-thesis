@@ -2,6 +2,7 @@
 #import "layouts/doc.typ": doc
 #import "layouts/preface.typ": preface
 #import "layouts/mainmatter.typ": mainmatter
+#import "layouts/appendix.typ": appendix
 #import "pages/bachelor-cover.typ": bachelor-cover
 #import "pages/bachelor-integrity.typ": bachelor-integrity
 #import "pages/bachelor-abstract.typ": bachelor-abstract
@@ -64,6 +65,7 @@
         fonts: fonts + args.named().at("fonts", default: (:)),
       )
     },
+    appendix: (..args) => appendix(..args),
     // 封面页
     cover: (..args) => bachelor-cover(
       twoside: twoside,

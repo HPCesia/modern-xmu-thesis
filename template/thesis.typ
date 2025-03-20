@@ -7,6 +7,7 @@
   doc,
   preface,
   mainmatter,
+  appendix,
   // 页面函数
   cover,
   integrity,
@@ -305,3 +306,24 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
   },
   caption: [伪代码示例]
 )
+
+// ====== 附录 ======
+// 手动分页
+#if twoside {
+  set page(header: none, footer: none)
+  pagebreak() + " "
+}
+
+// 中英双语参考文献
+// 默认使用 gb-7714-2015-numeric 样式
+// #bilingual-bibliography(full: true)
+
+// 手动分页
+#if twoside {
+  set page(header: none, footer: none)
+  pagebreak() + " "
+}
+
+#show: appendix
+
+= 附录#metadata((en: "Appendix"))
