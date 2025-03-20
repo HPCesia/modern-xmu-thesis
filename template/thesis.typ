@@ -15,6 +15,7 @@
   abstract-en,
   outline-page,
   outline-page-en,
+  bilingual-bibliography,
 ) = documentclass(
   twoside: true, // 双面模式，会加入空白页，便于打印
   info: (
@@ -52,12 +53,14 @@
 // 中文摘要
 #abstract(
   keywords: ("本科毕业论文", "厦门大学", "Typst"),
-  outline-title: "中文摘要",
+  // outlined: true,
+  // outline-title: "中文摘要",
+  // outline-title-en: "Abstract (Chinese Ver.)",
 )[
   // 导入 LaTeX 图标
   #import "@preview/metalogo:1.2.0": LaTeX
 
-  本模板参考#link("https://github.com/nju-lug/modern-nju-thesis")[南京大学学位论文模板 modern-nju-thesis]与#link("https://github.com/F5Soft/xmu-template")[厦门大学本科毕业论文 #LaTeX 模版]，并根据《厦门大学本科毕业论文（设计）规范》进行制作。
+  本模板参考#link("https://github.com/nju-lug/modern-nju-thesis")[南京大学学位论文模板 modern-nju-thesis]与#link("https://github.com/F5Soft/xmu-template")[厦门大学本科毕业论文 #LaTeX 模版]，并根据《厦门大学本科毕业论文（设计）规范》@XMUThesisStandard 进行制作。
 
   本模版提供高清封面、诚信承诺书、中英文摘要环境、中英文目录自动生成、附录环境、参考文献环境、致谢环境等。本模板通过 Typst
   字体 fallback 功能，适配了 Windows 和 macOS 系统的字体，将以思源黑体/宋体、Windows 自带黑体/宋体、macOS
@@ -71,12 +74,14 @@
 #abstract-en(
   twoside: false,
   keywords: ("Undergraduate Thesis", "Xiamen University", "Typst"),
-  outline-title: "Abstract",
+  // outlined: true,
+  // outline-title: "英文摘要",
+  // outline-title-en: "Abstract (English Ver.)",
 )[
   // 导入 LaTeX 图标
   #import "@preview/metalogo:1.2.0": LaTeX
 
-  This template is based on #link("https://github.com/nju-lug/modern-nju-thesis")[modern-nju-thesis] template and #link("https://github.com/F5Soft/xmu-template")[Xiamen University Undergraduate Thesis #LaTeX Template], and is created according to the _Xiamen University Undergraduate Thesis (Design) Specification_.
+  This template is based on #link("https://github.com/nju-lug/modern-nju-thesis")[modern-nju-thesis] template and #link("https://github.com/F5Soft/xmu-template")[Xiamen University Undergraduate Thesis #LaTeX Template], and is created according to the _Xiamen University Undergraduate Dissertation (Design) Specification_@XMUThesisStandard.
 
   This template provides high-resolution cover, integrity commitment letter, Chinese and English abstract environments, automatic generation of Chinese and English tables of contents, appendix environment, reference environment, acknowledgment environment, etc. Through Typst's font fallback feature, this template adapts fonts for Windows and macOS systems, using Source Han Sans/Serif, Windows built-in Sans/Serif, and macOS built-in Sans/Serif fonts in order of priority based on what fonts are available in the compilation environment.
 
@@ -121,7 +126,7 @@ VSCode + Tinymist 需要先在官网#footnote[https://code.visualstudio.com/down
 
 == 使用模板#metadata((en: "Using the Template"))
 
-本模版根据《厦门大学本科毕业论文（设计）规范》封装了大量格式设置等内容，使用时无需考虑各种格式指令，只需设置好章节标题，填充摘要、附录、参考文献、致谢等内容即可。
+本模版根据《厦门大学本科毕业论文（设计）规范》@XMUThesisStandard 制作，使用时无需考虑各种格式指令，只需设置好章节标题，填充摘要、附录、参考文献、致谢等内容即可。
 
 如果需要自定义部分样式，目前需要阅读源码中的注释来对一些函数传入的参数进行修改。如果有一定 Typst 基础，也可以 Fork 本模板的仓库，进行本地修改和编译。
 
@@ -304,26 +309,127 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
       + *end* *for*
     ]
   },
-  caption: [伪代码示例]
+  caption: [伪代码示例],
 )
 
 // ====== 附录 ======
 // 手动分页
 #if twoside {
   set page(header: none, footer: none)
-  pagebreak() + " "
+  pagebreak(weak: true, to: "odd")
 }
 
-// 中英双语参考文献
-// 默认使用 gb-7714-2015-numeric 样式
-// #bilingual-bibliography(full: true)
+// 参考文献
+// 默认使用 gb-7714-2005-numeric 样式
+#bilingual-bibliography(bibliography: bibliography.with("ref.bib"))
 
 // 手动分页
 #if twoside {
   set page(header: none, footer: none)
-  pagebreak() + " "
+  pagebreak(weak: true, to: "odd")
 }
 
 #show: appendix
 
 = 附录#metadata((en: "Appendix"))
+
+== 附表#metadata((en: "Tables"))
+
+这里放一些附录的内容，例如表格或其他说明。如@tbl:appendix-table。制作模板时间精力有限，因此附录不会自动编号。如需编号为「附录 A」，请手动添加。
+
+#figure(
+  table(
+    columns: 4,
+    stroke: none,
+    table.hline(stroke: 1pt),
+    [t], [1], [2], [3],
+    table.hline(stroke: .75pt),
+    [y], [0.3s], [0.4s], [0.8s],
+    table.hline(stroke: 1pt),
+  ),
+  caption: [附录表格示例],
+) <appendix-table>
+
+附录中图表和公式编号均以大写字母开头，区别于正文部分的编号。
+
+$ 1 / pi = (2 sqrt(2)) / (99^2) sum_(k=0)^oo ((4k)!) / (k!^4) (26390k + 1103) / (396^(4k)) $
+
+== 厦门大学本科毕业论文（设计）规范摘要#metadata((en: "Abstract of Xiamen University Undergraduate Dissertation (Design) Specification"))
+
+- 毕业论文（设计）一般包括：前置部分、正文、参考文献、附录 4 个部分。
+
+- 题目应简洁、明确、有概括性，避免使用不常见的缩略词、缩写字。中文题目一般不宜超过 20 个字，必要时可增加副标题。英文题目应与中文题目内容相同。
+
+- 主修专业毕业论文（设计）封面使用 160g 白色双胶纸，辅修封面为 160g 浅黄色皮纹纸。内页均为 A4 规格 80g 双胶纸。
+
+- 章的标题占2行，标题以外的文字为1.5倍行距。
+
+- 上边距和左边距应留 25mm 以上间隙，下边距和右边距应分别留 20mm 以上间隙。
+
+- 每页须加“页眉”和“页码”。奇数页页眉内容为当前章名，如“第一章 绪论”。偶数页页眉内容为论文题目。学位论文的页码，正文、参考文献、附录部分用阿拉伯数字连续编码并居中，前置部分用罗马数字单独连续编码居中（封面除外）。
+
+- 封面中文标题：二号黑体
+
+- 封面英文标题：三号 Times New Roman 加粗
+
+- 中文摘要标题：小三号黑体
+
+- 中文关键词标题：小四号黑体
+
+- 中文摘要、关键词内容：小四号宋体
+
+- 英文摘要标题：小三号 Times New Roman 加粗
+
+- 英文关键词标题：小四号 Times New Roman 加粗
+
+- 英文摘要、关键词内容：小四号 Times New Roman
+
+- 中文目录标题：小三号黑体
+
+- 中文目录中章的标题：四号黑体
+
+- 中文目录中节的标题：小四号黑体
+
+- 中文目录中三级标题：小四号宋体
+
+- 英文目录标题：小三号 Times New Roman 加粗
+
+- 英文目录中章的标题：四号 Times New Roman 加粗
+
+- 英文目录中节的标题：小四号 Times New Roman 加粗
+
+- 英文目录中三级标题：小四号 Times New Roman
+
+- 章的标题：小三号黑体
+
+- 节的标题：四号黑体
+
+- 三级标题：小四号黑体
+
+- 正文：小四号宋体
+
+- 页眉：小五号宋体
+
+- 页码：小五号 Times New Roman
+
+- 注释内容：小五号宋体
+
+- 表格、图的标题、单位、表头：五号宋体加粗
+
+- 表格内容：五号宋体
+
+- 表格、图的资料来源：小五号宋体
+
+- 参考文献标题：小三号黑体
+
+- 中文参考文献表：五号宋体
+
+- 英文参考文献表：五号 Times New Roman
+
+- 附录标题：小三号黑体
+
+- 致谢标题：小三号黑体
+
+- 致谢内容：小四号宋体
+
+对于中英文混杂的内容，中文的字体若是用宋体，英文的字体则采用 Times New Roman；中文的字体若是黑体，英文的字体则采用 Arial。

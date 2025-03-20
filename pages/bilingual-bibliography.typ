@@ -46,7 +46,7 @@
     let ittext = to-string(it)
     // 判断是否为中文文献：去除特定词组后，仍有至少两个连续汉字。
     let pureittext = ittext.replace(regex("[等卷册和版本章期页篇译间者(不详)]"), "")
-    if pureittext.find(regex("\p{sc=Hani}{2,}")) != none {
+    let ittext = if pureittext.find(regex("\p{sc=Hani}{2,}")) != none {
       ittext
     } else {
       // 若不是中文文献，进行替换
@@ -141,6 +141,27 @@
       )
       reptext
     }
+
+    // 判断文献类型的方括号前是否为中文
+    // 如果不是中文且不是空格，加一个空格
+    // 并且 style 应为 gb-7714
+    if style.starts-with("gb-7714") {
+      ittext = ittext.replace(
+        regex("(.)\[([A-Z])"),
+        itt => {
+          if itt.captures.at(0) != none {
+            let char = itt.captures.at(0)
+            if char.match(regex("\p{sc=Hani}")) == none and char != " " {
+              char + " ["
+            } else {
+              char + "["
+            }
+          }
+          itt.captures.at(1)
+        },
+      )
+    }
+    ittext
   }
 
   set text(lang: "zh")
