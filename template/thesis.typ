@@ -312,6 +312,12 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
   caption: [伪代码示例],
 )
 
+== 参考文献#metadata((en: "References"))
+
+参考文献使用 BibTeX 格式的 .bib 文件，根据规范使用 GB/T 7714－2005《文后参考文献著录规则》进行编排。
+
+你可以像引用其他标签一样引用参考文献，例如`@lu2021deepxde`@lu2021deepxde。
+
 // ====== 附录 ======
 // 手动分页
 #if twoside {
