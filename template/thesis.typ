@@ -1,5 +1,5 @@
 // #import "@preview/modern-xmu-thesis:0.0.1": documentclass, dual-heading // TODO: 上传至 Typst Universe 时取消本行注释
-#import "../lib.typ": documentclass, dual-heading // TODO: 上传至 Typst Universe 时删除本行
+#import "../lib.typ": documentclass // TODO: 上传至 Typst Universe 时删除本行
 
 #let (
   // 布局函数
