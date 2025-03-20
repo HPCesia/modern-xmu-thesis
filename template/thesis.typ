@@ -1,5 +1,5 @@
-// #import "@preview/modern-xmu-thesis:0.0.1": documentclass // TODO: 上传至 Typst Universe 时取消本行注释
-#import "../lib.typ": documentclass // TODO: 上传至 Typst Universe 时删除本行
+// #import "@preview/modern-xmu-thesis:0.0.1": documentclass, dual-heading // TODO: 上传至 Typst Universe 时取消本行注释
+#import "../lib.typ": documentclass, dual-heading // TODO: 上传至 Typst Universe 时删除本行
 
 #let (
   // 布局函数
@@ -12,6 +12,8 @@
   integrity,
   abstract,
   abstract-en,
+  outline-page,
+  outline-page-en,
 ) = documentclass(
   twoside: true, // 双面模式，会加入空白页，便于打印
   info: (
@@ -49,7 +51,6 @@
 // 中文摘要
 #abstract(
   keywords: ("本科毕业论文", "厦门大学", "Typst"),
-  outlined: true,
   outline-title: "中文摘要",
 )[
   // 导入 LaTeX 图标
@@ -69,7 +70,6 @@
 #abstract-en(
   twoside: false,
   keywords: ("Undergraduate Thesis", "Xiamen University", "Typst"),
-  outlined: true,
   outline-title: "Abstract",
 )[
   // 导入 LaTeX 图标
@@ -82,9 +82,11 @@
   It is recommended to fully browse all the content in this template before use to fully understand how to use the template and the basic usage of Typst.
 ]
 
-// TODO: 中文目录页
+// 中文目录页
+#outline-page()
 
-// TODO: 英文目录页
+//  英文目录页
+#outline-page-en(twoside: false)
 
 // ====== 正文部分 ======
 #show: mainmatter
