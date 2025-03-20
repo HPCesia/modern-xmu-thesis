@@ -9,6 +9,7 @@
   // 其他参数
   keywords: (),
   outline-title: "中文摘要",
+  outline-title-en: "Abstract in Chinese",
   outlined: false,
   leading: 1.28em,
   spacing: 1.28em,
@@ -20,7 +21,7 @@
   // 2.  正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
 
-  invisible-heading(level: 1, outlined: outlined, outline-title)
+  invisible-heading(level: 1, outlined: outlined, [#outline-title#metadata((en: outline-title-en))])
 
   v(spacing)
   align(center, text(size: 字号.小三, font: fonts.黑体)[摘#h(1.5em)要])
