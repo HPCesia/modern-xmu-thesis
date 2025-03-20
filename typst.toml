@@ -1,8 +1,8 @@
 [package]
 name = "modern-xmu-thesis"
-version = "0.0.1"
+version = "0.1.0"
 entrypoint = "lib.typ"
-authors = ["HPCesia"]
+authors = ["HPCesia <https://github.com/HPCesia>"]
 license = "MIT"
 description = "厦门大学学位论文模板。Modern Xiamen University Thesis."
 keywords = ["Xiamen University", "thesis"]
