@@ -89,6 +89,7 @@
   )
   show raw: set text(font: fonts.等宽)
   // 3.2 脚注样式
+  set footnote(numbering: "①")
   show footnote.entry: set text(font: fonts.宋体, size: 字号.小五)
   // 3.3 设置 figure 的编号
   show heading: i-figured.reset-counters
