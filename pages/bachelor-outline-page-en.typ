@@ -10,7 +10,7 @@
   // 其他参数
   depth: 3,
   title: "Contents",
-  entry-numbering: numbly("Chapter {1}", "{1}.{2}"),
+  entry-numbering: ("Chapter {1}",),
   outlined: false,
   title-vspace: 14pt,
   title-text-args: auto,
@@ -71,7 +71,13 @@
             weight: weight.at(entry.level - 1, default: weight.last()),
             {
               if entry.prefix() not in (none, []) and entry.element.numbering != none {
-                numbering(entry-numbering, ..counter(outline.target).at(entry.element.location()))
+                let enentry-numbering-len = entry-numbering.len()
+                let used-numbering = if entry.element.level < enentry-numbering-len {
+                  numbly(..entry-numbering)
+                } else {
+                  entry.element.numbering
+                }
+                numbering(used-numbering, ..counter(outline.target).at(entry.element.location()))
                 h(gap)
               }
               {
