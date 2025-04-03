@@ -72,7 +72,7 @@
             {
               if entry.prefix() not in (none, []) and entry.element.numbering != none {
                 let enentry-numbering-len = entry-numbering.len()
-                let used-numbering = if entry.element.level < enentry-numbering-len {
+                let used-numbering = if entry.element.level <= enentry-numbering-len {
                   numbly(..entry-numbering)
                 } else {
                   entry.element.numbering
@@ -82,10 +82,10 @@
               }
               {
                 let body = entry.body()
-                assert(body.fields().keys().contains("children"), message: "论文应全部使用 `dual-heading` 作为标题")
+                assert(body.fields().keys().contains("children"), message: "论文标题应在最后添加 `#metadata((en: \"英文标题\"))`")
                 let meta = body.children.last()
-                assert(repr(meta).starts-with("metadata"), message: "论文应全部使用 `dual-heading` 作为标题")
-                assert(meta.value.keys().contains("en"), message: "论文应全部使用 `dual-heading` 作为标题")
+                assert(repr(meta).starts-with("metadata"), message: "论文标题应在最后添加 `#metadata((en: \"英文标题\"))`")
+                assert(meta.value.keys().contains("en"), message: "论文标题应在最后添加 `#metadata((en: \"英文标题\"))`")
                 meta.value.en
               }
             },
