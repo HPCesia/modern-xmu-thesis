@@ -26,17 +26,11 @@
     grade: "20XX",
     student-id: "1234567890",
     author: "张三",
-    author-en: "Zhang San",
     department: "某学院",
-    department-en: "XX Department",
     major: "某专业",
-    major-en: "XX Major",
     field: "某方向",
-    field-en: "XX Field",
     supervisor: ("李四", "教授"),
-    supervisor-en: "Professor Li Si",
     supervisor-outside: (),
-    supervisor-outside-en: "",
     submit-date: datetime.today(),
   ) + info
 
