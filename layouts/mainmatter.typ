@@ -14,7 +14,7 @@
   spacing: 1.5 * 15.6pt - 0.7em,
   justify: true,
   first-line-indent: (amount: 2em, all: true),
-  numbering: numbly("第{1:一}章   ", "{1}.{2} "),
+  numbering: numbly("第{1:一}章", "{1}.{2} "),
   // 正文字体与字号参数
   text-args: auto,
   // 标题字体与字号
@@ -51,16 +51,19 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "厦门大学本科毕业论文模板"),
-    title-en: "An XMU Undergraduate Thesis Template\nPowered by Typst",
-    grade: "20XX",
-    student-id: "1234567890",
-    author: "张三",
-    department: "某学院",
-    major: "某专业",
-    supervisor: ("李四", "教授"),
-    submit-date: datetime.today(),
-  ) + info
+    (
+      title: ("基于 Typst 的", "厦门大学本科毕业论文模板"),
+      title-en: "An XMU Undergraduate Thesis Template\nPowered by Typst",
+      grade: "20XX",
+      student-id: "1234567890",
+      author: "张三",
+      department: "某学院",
+      major: "某专业",
+      supervisor: ("李四", "教授"),
+      submit-date: datetime.today(),
+    )
+      + info
+  )
   // 1.1 字体与字号
   if (text-args == auto) {
     text-args = (font: fonts.宋体, size: 字号.小四)
@@ -69,7 +72,9 @@
     heading-font = (fonts.黑体,)
   }
   // 1.2 处理 heading- 开头的其他参数
-  let heading-text-args-lists = args.named().pairs()
+  let heading-text-args-lists = args
+    .named()
+    .pairs()
     .filter(pair => pair.at(0).starts-with("heading-"))
     .map(pair => (pair.at(0).slice("heading-".len()), pair.at(1)))
 
@@ -97,9 +102,7 @@
   // 3.4 设置 equation 的编号
   show math.equation.where(block: true): show-equation
   // 3.5 表格表头置顶 + 不用冒号用空格分割 + 样式
-  show figure.where(
-    kind: table
-  ): set figure.caption(position: top)
+  show figure.where(kind: table): set figure.caption(position: top)
   set figure.caption(separator: separator)
   show figure.caption: caption-style
   show figure.caption: set text(font: fonts.宋体, size: caption-text-size)
@@ -113,14 +116,25 @@
       font: array-at(heading-font, it.level),
       size: array-at(heading-size, it.level),
       weight: array-at(heading-weight, it.level),
-      ..unpairs(heading-text-args-lists
-        .map((pair) => (pair.at(0), array-at(pair.at(1), it.level))))
+      ..unpairs(heading-text-args-lists.map(pair => (pair.at(0), array-at(pair.at(1), it.level)))),
     )
     set block(
       above: array-at(heading-above, it.level),
       below: array-at(heading-below, it.level),
     )
-    it
+    if it.level == 1 {
+      block({
+        counter(heading).display(numbering)
+        h(2em)
+        it.body
+        // 使 i-figured 正常更新
+        set text(size: 0pt)
+        set block(above: 0pt, below: 0pt)
+        it
+      })
+    } else {
+      it
+    }
   }
   // 4.3 标题居中与自动换页
   show heading: it => {
@@ -162,10 +176,12 @@
     },
   ))
 
-  set page(footer: context {
-    set text(font: fonts.宋体, size: 字号.小五)
-    align(center, counter(page).display("1"))
-  })
+  set page(
+    footer: context {
+      set text(font: fonts.宋体, size: 字号.小五)
+      align(center, counter(page).display("1"))
+    },
+  )
   counter(page).update(1)
   it
 }
