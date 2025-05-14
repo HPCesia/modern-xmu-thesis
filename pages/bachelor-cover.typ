@@ -54,7 +54,7 @@
   set align(center)
 
   // 学校 LOGO
-  v(20pt)
+  v(45pt)
   image("../assets/xmu-zi-jiageng.svg", width: 208pt)
   v(3em)
 
@@ -94,7 +94,7 @@
     if info.supervisor-outside != () { info.supervisor-outside.join(" ") },
   ))
 
-  v(10em)
+  v(6em)
 
   text(size: 字号.四号, font: fonts.宋体, info.submit-date)
 }
