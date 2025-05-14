@@ -122,9 +122,9 @@
       above: array-at(heading-above, it.level),
       below: array-at(heading-below, it.level),
     )
-    if it.level == 1 and it.numbering != none {
+    if it.level == 1 and it.numbering != none and counter(heading).display(it.numbering) != none {
       block({
-        counter(heading).display(numbering)
+        counter(heading).display(it.numbering)
         h(2em)
         it.body
         // 使 i-figured 正常更新
