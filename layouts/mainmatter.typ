@@ -141,7 +141,7 @@
     if array-at(heading-pagebreak, it.level) {
       // 如果打上了 no-auto-pagebreak 标签，则不自动换页
       if "label" not in it.fields() or str(it.label) != "no-auto-pagebreak" {
-        pagebreak(weak: true)
+        pagebreak(weak: true, to: if twoside { "odd" })
         block() // 用于使页顶处的 heading 的 above 属性生效
       }
     }
