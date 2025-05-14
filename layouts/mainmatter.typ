@@ -122,7 +122,7 @@
       above: array-at(heading-above, it.level),
       below: array-at(heading-below, it.level),
     )
-    if it.level == 1 {
+    if it.level == 1 and it.numbering != none {
       block({
         counter(heading).display(numbering)
         h(2em)
