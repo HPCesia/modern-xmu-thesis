@@ -43,11 +43,21 @@
 // ====== 前言 ======
 #show: preface
 
+
 // 致谢
 #acknowledgement()[
-  致谢语应以简短的文字对课题研究与论文撰写过程中曾直接给予帮助的人员（例如指导教师、答疑教师及其他人员）表示自己的谢意。
+  致谢语应以简短的文字对课题研究与论文撰写过程中曾直接给予帮助的人员（例如指导教师、答疑教师及其他人员）表示自己的谢意。如果本模板对你有所帮助，你也可以将其作为致谢的一部分。
 
-  如果本模板的使用对你有帮助，你也可以将其作为致谢的一部分。
+  /// 蓝色的超链接，一般文章中不需要用到，可以直接删掉。
+  #let hyperlink(dest, body) = link(
+    dest,
+    text(
+      fill: blue,
+      box(stroke: (bottom: 0.5pt + blue), outset: (bottom: 0.175em), body),
+    ),
+  )
+
+  感谢 #hyperlink("https://qm.qq.com/q/NAtT7gF5ys", [Typst 非官方中文交流群])的群友们在作者编写本模板时提供的帮助，让我在编写模板时少走了很多弯路。
 ]
 
 // 中文摘要
@@ -57,7 +67,7 @@
   // outline-title: "中文摘要",
   // outline-title-en: "Abstract (Chinese Ver.)",
 )[
-  // 导入 LaTeX 图标
+  // 导入 LaTeX 图标。如果你不需要，可以直接删掉。
   #import "@preview/metalogo:1.2.0": LaTeX
 
   本模板参考#link("https://github.com/nju-lug/modern-nju-thesis")[南京大学学位论文模板 modern-nju-thesis]与#link("https://github.com/F5Soft/xmu-template")[厦门大学本科毕业论文 #LaTeX 模版]，并根据《厦门大学本科毕业论文（设计）规范》@XMUThesisStandard 进行制作。
@@ -72,7 +82,6 @@
 // 英文摘要
 
 #abstract-en(
-  twoside: false,
   keywords: ("Undergraduate Thesis", "Xiamen University", "Typst"),
   // outlined: true,
   // outline-title: "英文摘要",
@@ -93,11 +102,13 @@
 
 //  英文目录页
 // 此处可以传入 `entry-numbering` 参数，用于设置英文版目录中，各级标题的前缀
-#outline-page-en(twoside: false)
+#outline-page-en()
 
 // ====== 正文部分 ======
 #show: mainmatter
 
+// 所有标题都应该满足如下的格式
+// =...= 中文#metadata((en: "英文标题"))
 = 使用说明#metadata((en: "Introduction"))
 
 == 环境配置#metadata((en: "Environment Setup"))
@@ -263,19 +274,32 @@ VSCode + Tinymist 需要先在官网#footnote[https://code.visualstudio.com/down
 
 可以像 Markdown 一样写行内公式 $x + y$，以及带编号的行间公式：
 
-$ phi.alt := (1 + sqrt(5)) / 2 $ <ratio>
+$ phi.alt := (1 + sqrt(5)) / 2. $ <ratio>
 
-引用数学公式需要加上 `eqt:` 前缀，则由@eqt:ratio，我们有：
+#h(-2em) 引用数学公式需要加上 `eqt:` 前缀，则由@eqt:ratio，我们有：
 
-$ F_n = floor(1 / sqrt(5) phi.alt^n) $
+$ F_n = floor(1 / sqrt(5) phi.alt^n). $
 
-我们也可以通过 `<->` 标签来标识该行间公式不需要编号
+#h(-2em) 我们也可以通过 `<->` 标签来标识该行间公式不需要编号
 
-$ y = integral_1^2 x^2 dif x $ <->
+$ y = integral_1^2 x^2 dif x, $ <->
 
-而后续数学公式仍然能正常编号。
+#h(-2em) 而后续数学公式仍然能正常编号：
 
-$ F_n = floor(1 / sqrt(5) phi.alt^n) $
+$ F_n = floor(1 / sqrt(5) phi.alt^n). $
+
+比较不幸的是，由于 Typst 的排版结构问题，如果你不想在行间公式后新起一段，你需要手动在行间公式的后一行开头添加负缩进。你也可以使用目前#footnote[指 2025 年 5 月 17 日]尚不完善且未正式发布的改进版 indenta 包#footnote[https://github.com/ParaN3xus/typst-snippets/tree/main/indenta]来实现如下的效果：
+
+#zebraw(lang: false)[
+  ```typst
+  $ sin^2 x + cos^2 x = 1 $
+  这段不会首行缩进。
+
+  $ sin^2 x + cos^2 x = 1 $
+
+  与上面的行间公式间有空行，这段会首行缩进。
+  ```
+]
 
 == 代码与伪代码#metadata((en: "Codes and Pseudocodes"))
 
@@ -316,7 +340,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
 参考文献使用 BibTeX 格式的 .bib 文件，根据规范使用 GB/T 7714－2005《文后参考文献著录规则》进行编排。
 
-你可以像引用其他标签一样引用参考文献，例如`@lu2021deepxde`@lu2021deepxde。
+你可以像引用其他标签一样引用参考文献，例如`@Madje_Typst`@Madje_Typst。
 
 // ====== 附录 ======
 // 手动分页
