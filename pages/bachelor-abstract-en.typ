@@ -28,7 +28,7 @@
   v(spacing*2)
 
   [
-    #set par(first-line-indent: (amount: 2em, all: true), leading: leading, spacing: spacing)
+    #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: leading, spacing: spacing)
     #set text(size: 字号.小四, font: 英文(fonts.宋体))
 
     #body
