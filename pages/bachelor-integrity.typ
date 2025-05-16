@@ -28,14 +28,18 @@
 
   v(4em)
 
-  grid(columns: (1fr, 15.5em, 3.5em), [], {
-    align(left)[
-      #set text(font: fonts.宋体, size: 字号.四号)
-      学生声明（签名）：
-    ]
-    align(right)[
-      #set text(font: fonts.宋体, size: 字号.四号)
-      年#h(1.5em) 月#h(1.5em) 日
-    ]
-  })
+  grid(
+    columns: (1fr, 15.5em, 3.5em),
+    [],
+    {
+      align(left)[
+        #set text(font: fonts.宋体, size: 字号.四号)
+        学生声明（签名）：
+      ]
+      align(right)[
+        #set text(font: fonts.宋体, size: 字号.四号)
+        年#h(1.5em) 月#h(1.5em) 日
+      ]
+    },
+  )
 }

@@ -21,18 +21,21 @@
 ) = {
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "厦门大学本科毕业论文模板"),
-    title-en: "An XMU Undergraduate Thesis Template\nPowered by Typst",
-    grade: "20XX",
-    student-id: "1234567890",
-    author: "张三",
-    department: "某学院",
-    major: "某专业",
-    field: "某方向",
-    supervisor: ("李四", "教授"),
-    supervisor-outside: (),
-    submit-date: datetime.today(),
-  ) + info
+    (
+      title: ("基于 Typst 的", "厦门大学本科毕业论文模板"),
+      title-en: "An XMU Undergraduate Thesis Template\nPowered by Typst",
+      grade: "20XX",
+      student-id: "1234567890",
+      author: "张三",
+      department: "某学院",
+      major: "某专业",
+      field: "某方向",
+      supervisor: ("李四", "教授"),
+      supervisor-outside: (),
+      submit-date: datetime.today(),
+    )
+      + info
+  )
 
   return (
     // 将传入参数再导出
@@ -88,7 +91,7 @@
       fonts: fonts + args.named().at("fonts", default: (:)),
     ),
     // 英文摘要页
-    abstract-en:(..args) => bachelor-abstract-en(
+    abstract-en: (..args) => bachelor-abstract-en(
       twoside: twoside,
       ..args,
       fonts: fonts + args.named().at("fonts", default: (:)),

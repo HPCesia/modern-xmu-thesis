@@ -25,6 +25,8 @@
   // 设置 figure 的编号
   show figure: show-figure.with(numbering: figure-equation-numbering)
   // 设置 equation 的编号
-  show math.equation.where(block: true): show-equation.with(numbering: (..args) => "(" + figure-equation-numbering(..args) + ")")
+  show math.equation.where(block: true): show-equation.with(
+    numbering: (..args) => "(" + figure-equation-numbering(..args) + ")",
+  )
   it
 }

@@ -154,7 +154,7 @@
   }
 
   // 5.  页眉配置
-  set page(..(
+  set page(
     header: {
       // 重置 footnote 计数器
       if reset-footnote {
@@ -174,7 +174,7 @@
       // 分隔线
       place(bottom, dy: 0.35em, line(length: 100%, stroke: 0.5pt))
     },
-  ))
+  )
 
   set page(
     footer: context {

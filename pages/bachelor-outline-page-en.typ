@@ -82,10 +82,19 @@
               }
               {
                 let body = entry.body()
-                assert(body.fields().keys().contains("children"), message: "论文标题应在最后添加 `#metadata((en: \"英文标题\"))`")
+                assert(
+                  body.fields().keys().contains("children"),
+                  message: "论文标题应在最后添加 `#metadata((en: \"英文标题\"))`",
+                )
                 let meta = body.children.last()
-                assert(repr(meta).starts-with("metadata"), message: "论文标题应在最后添加 `#metadata((en: \"英文标题\"))`")
-                assert(meta.value.keys().contains("en"), message: "论文标题应在最后添加 `#metadata((en: \"英文标题\"))`")
+                assert(
+                  repr(meta).starts-with("metadata"),
+                  message: "论文标题应在最后添加 `#metadata((en: \"英文标题\"))`",
+                )
+                assert(
+                  meta.value.keys().contains("en"),
+                  message: "论文标题应在最后添加 `#metadata((en: \"英文标题\"))`",
+                )
                 meta.value.en
               }
             },

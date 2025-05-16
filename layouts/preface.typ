@@ -18,9 +18,11 @@
 
   // 3.  处理页脚
   counter(page).update(0)
-  set page(footer: context {
-    set text(font: fonts.宋体, size: 字号.小五)
-    align(center, counter(page).display("I"))
-  })
+  set page(
+    footer: context {
+      set text(font: fonts.宋体, size: 字号.小五)
+      align(center, counter(page).display("I"))
+    },
+  )
   it
 }

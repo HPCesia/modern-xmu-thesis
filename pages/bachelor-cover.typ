@@ -15,16 +15,19 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   info = (
-    title: ("基于 Typst 的", "厦门大学本科毕业论文模板"),
-    title-en: "An XMU Undergraduate Thesis Template\nPowered by Typst",
-    grade: "20XX",
-    student-id: "1234567890",
-    author: "张三",
-    department: "某学院",
-    major: "某专业",
-    supervisor: ("李四", "教授"),
-    submit-date: datetime.today(),
-  ) + info
+    (
+      title: ("基于 Typst 的", "厦门大学本科毕业论文模板"),
+      title-en: "An XMU Undergraduate Thesis Template\nPowered by Typst",
+      grade: "20XX",
+      student-id: "1234567890",
+      author: "张三",
+      department: "某学院",
+      major: "某专业",
+      supervisor: ("李四", "教授"),
+      submit-date: datetime.today(),
+    )
+      + info
+  )
 
   // 2.  对参数进行处理
   // 2.1 如果是字符串，则使用换行符将标题分隔为列表
@@ -73,26 +76,23 @@
 
   v(2em)
 
-  text(size: 字号.四号, font: fonts.宋体, grid(
-    align: (right, left),
-    columns: (1fr, 1fr),
-    row-gutter: 1.5em,
-    column-gutter: 1.5em,
-    info-key-short("姓名"),
-    info.author,
-    info-key-short("学号"),
-    info.student-id,
-    info-key-short("学院"),
-    info.department,
-    info-key-short("专业"),
-    info.major,
-    info-key-short("年级"),
-    info.grade + "级",
-    info-key-long("校内指导老师"),
-    info.supervisor.join(" "),
-    info-key-long("校外指导老师"),
-    if info.supervisor-outside != () { info.supervisor-outside.join(" ") },
-  ))
+  text(
+    size: 字号.四号,
+    font: fonts.宋体,
+    grid(
+      align: (right, left),
+      columns: (1fr, 1fr),
+      row-gutter: 1.5em,
+      column-gutter: 1.5em,
+      info-key-short("姓名"), info.author,
+      info-key-short("学号"), info.student-id,
+      info-key-short("学院"), info.department,
+      info-key-short("专业"), info.major,
+      info-key-short("年级"), info.grade + "级",
+      info-key-long("校内指导老师"), info.supervisor.join(" "),
+      info-key-long("校外指导老师"), if info.supervisor-outside != () { info.supervisor-outside.join(" ") },
+    ),
+  )
 
   v(6em)
 

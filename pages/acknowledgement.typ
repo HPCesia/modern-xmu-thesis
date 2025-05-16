@@ -23,7 +23,7 @@
 
   v(spacing)
   align(center, text(size: 字号.小三, font: fonts.黑体)[致#h(1.5em)谢])
-  v(spacing*2)
+  v(spacing * 2)
 
   [
     #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: leading, spacing: spacing)
@@ -31,5 +31,4 @@
 
     #body
   ]
-
 }
