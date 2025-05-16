@@ -7,7 +7,7 @@
   // 其他参数
   fallback: false, // 字体缺失时使用 fallback，不显示豆腐块
   lang: "zh", // 语言设置
-  margin: (x: 89pt), // 页面边距
+  margin: (left: 3cm, top: 3cm, right: 2.5cm, bottom: 2.5cm), // 页面边距
   it,
 ) = {
   // 1.  默认参数
