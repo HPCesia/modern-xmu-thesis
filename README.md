@@ -5,9 +5,11 @@
 
 厦门大学本科毕业论文（设计）的 Typst 模板，能够简洁、快速、持续生成 PDF 格式的毕业论文。
 
-Typst 非官方中文交流群：793548390
+推荐加入「Typst 非官方中文交流群」进行交流：793548390
 
 ## 使用方法
+
+开始使用模板时，请先完整阅读模板中的默认内容（的预览），了解如何从模板开始编写自己的论文。
 
 ### 在线编辑
 
@@ -22,6 +24,10 @@ Typst 非官方中文交流群：793548390
 在 VSCode 中按下「Ctrl + Shift + P」打开命令界面，输入「Typst: Show available Typst templates (gallery) for picking up a template」打开 Tinymist 提供的模板列表，然后从里面找到 modern-xmu-thesis，点击「+」号即可创建对应的论文模板。
 
 最后用 VS Code 打开生成的目录，打开 thesis.typ 文件，并按下「Ctrl + K, V」进行实时编辑和预览。
+
+### 本地开发
+
+如果你想要开发本模板，请从 [GitHub 仓库](https://github.com/HPCesia/modern-xmu-thesis)克隆（或下载）代码到本地，将 `template/thesis.typ` 首行的导入路径更换为 `"../lib.typ"`。
 
 ## 致谢
 
