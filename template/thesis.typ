@@ -1,4 +1,4 @@
-#import "@preview/modern-xmu-thesis:0.2.0": documentclass
+#import "@preview/modern-xmu-thesis:0.2.1": documentclass
 
 #let (
   // 布局函数
