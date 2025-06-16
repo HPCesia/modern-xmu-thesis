@@ -1,6 +1,6 @@
 #import "@preview/i-figured:0.2.4"
 #import "@preview/numbly:0.1.0": numbly
-#import "@preview/hydra:0.6.0": hydra
+#import "@preview/hydra:0.6.1": hydra
 #import "../utils/style.typ": 字号, 字体
 #import "../utils/unpairs.typ": unpairs
 

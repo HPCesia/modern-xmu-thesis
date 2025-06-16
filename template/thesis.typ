@@ -149,7 +149,7 @@ VSCode + Tinymist 需要先在官网#footnote[https://code.visualstudio.com/down
 
 === 三级标题#metadata((en: "Subsection (English Ver.)"))
 
-#import "@preview/zebraw:0.4.8": zebraw // 导入代码块美化包
+#import "@preview/zebraw:0.5.4": zebraw // 导入代码块美化包
 
 使用@lst:创建各级标题 来创建带英文元数据的各级标题。
 
@@ -237,9 +237,7 @@ VSCode + Tinymist 需要先在官网#footnote[https://code.visualstudio.com/down
 
 #figure(
   {
-    import "@preview/lilaq:0.1.0" as lq
-    // 修复 https://github.com/lilaq-project/lilaq/issues/7，该 issue 已关闭，但版本尚未更新
-    set par(first-line-indent: 2em) // TODO: 当 lilaq 版本更新至 0.1.1 及以上时删除此行。
+    import "@preview/lilaq:0.3.0" as lq
     let x = lq.linspace(0, 10)
     lq.diagram(
       title: [$sin x$ 的函数图像],
@@ -258,7 +256,7 @@ VSCode + Tinymist 需要先在官网#footnote[https://code.visualstudio.com/down
 
 #figure(
   {
-    import "@preview/fletcher:0.5.7": diagram, node, edge
+    import "@preview/fletcher:0.5.8": diagram, node, edge
     diagram(
       cell-size: 15mm,
       $
