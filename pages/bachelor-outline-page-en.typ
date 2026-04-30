@@ -1,5 +1,5 @@
 #import "../utils/invisible-heading.typ": invisible-heading
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 #import "@preview/numbly:0.1.0": numbly
 
 // 本科生英文目录
@@ -56,7 +56,9 @@
   v(title-vspace)
 
   // 目录样式
-  set outline(indent: level => indent.slice(0, calc.min(level + 1, indent.len())).sum())
+  set outline(indent: level => indent
+    .slice(0, calc.min(level + 1, indent.len()))
+    .sum())
   show outline.entry: entry => block(
     above: above.at(entry.level - 1, default: above.last()),
     below: below.at(entry.level - 1, default: below.last()),
@@ -70,14 +72,22 @@
             size: size.at(entry.level - 1, default: size.last()),
             weight: weight.at(entry.level - 1, default: weight.last()),
             {
-              if entry.prefix() not in (none, []) and entry.element.numbering != none {
+              if (
+                entry.prefix() not in (none, [])
+                  and entry.element.numbering != none
+              ) {
                 let enentry-numbering-len = entry-numbering.len()
-                let used-numbering = if entry.element.level <= enentry-numbering-len {
+                let used-numbering = if (
+                  entry.element.level <= enentry-numbering-len
+                ) {
                   numbly(..entry-numbering)
                 } else {
                   entry.element.numbering
                 }
-                numbering(used-numbering, ..counter(outline.target).at(entry.element.location()))
+                numbering(
+                  used-numbering,
+                  ..counter(outline.target).at(entry.element.location()),
+                )
                 h(gap)
               }
               {
@@ -99,7 +109,10 @@
               }
             },
           )
-          box(width: 1fr, inset: (x: .25em), fill.at(entry.level - 1, default: fill.last()))
+          box(width: 1fr, inset: (x: .25em), fill.at(
+            entry.level - 1,
+            default: fill.last(),
+          ))
           entry.page()
         },
         gap: 0pt,

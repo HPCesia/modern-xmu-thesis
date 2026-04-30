@@ -1,4 +1,4 @@
-#import "../utils/style.typ": 字号, 字体, 英文
+#import "../utils/style.typ": 字体, 字号, 英文
 #import "../utils/invisible-heading.typ": invisible-heading
 
 // 本科生英文摘要页
@@ -21,14 +21,25 @@
   // 2.  正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
 
-  invisible-heading(level: 1, outlined: outlined, [#outline-title#metadata((en: outline-title-en))])
+  invisible-heading(level: 1, outlined: outlined, [#outline-title#metadata((
+      en: outline-title-en,
+    ))])
 
   v(spacing)
-  align(center, text(size: 字号.小三, font: 英文(fonts.宋体), weight: "bold")[Abstract])
+  align(center, text(
+    size: 字号.小三,
+    font: 英文(fonts.宋体),
+    weight: "bold",
+  )[Abstract])
   v(spacing * 2)
 
   [
-    #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: leading, spacing: spacing)
+    #set par(
+      justify: true,
+      first-line-indent: (amount: 2em, all: true),
+      leading: leading,
+      spacing: spacing,
+    )
     #set text(size: 字号.小四, font: 英文(fonts.宋体))
 
     #body
@@ -37,5 +48,9 @@
   v(spacing)
 
   text(size: 字号.小四, font: 英文(fonts.宋体), weight: "bold")[Key Words: ]
-  text(size: 字号.小四, font: 英文(fonts.宋体), (("",) + keywords.intersperse("; ")).sum())
+  text(
+    size: 字号.小四,
+    font: 英文(fonts.宋体),
+    (("",) + keywords.intersperse("; ")).sum(),
+  )
 }

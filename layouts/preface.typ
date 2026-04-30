@@ -1,4 +1,4 @@
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 
 #let preface(
   // documentclass 传入的参数

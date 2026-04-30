@@ -256,11 +256,11 @@ VSCode + Tinymist 需要先在官网#footnote[https://code.visualstudio.com/down
 
 #figure(
   {
-    import "@preview/fletcher:0.5.8": diagram, node, edge
+    import "@preview/fletcher:0.5.8": diagram, edge, node
     diagram(
       cell-size: 15mm,
       $
-        G edge(f, ->) edge("d", pi, ->>) & im(f) \
+                      G edge(f, ->) edge("d", pi, ->>) & im(f) \
         G slash ker(f) edge("ur", tilde(f), "hook-->")
       $,
     )
@@ -380,7 +380,9 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n). $
 
 附录中图表和公式编号均以大写字母开头，区别于正文部分的编号。
 
-$ 1 / pi = (2 sqrt(2)) / (99^2) sum_(k=0)^oo ((4k)!) / (k!^4) (26390k + 1103) / (396^(4k)) $
+$
+  1 / pi = (2 sqrt(2)) / (99^2) sum_(k=0)^oo ((4k)!) / (k!^4) (26390k + 1103) / (396^(4k))
+$
 
 == 厦门大学本科毕业论文（设计）规范摘要#metadata((en: "Abstract of Xiamen University Undergraduate Dissertation (Design) Specification"))
 

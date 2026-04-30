@@ -1,4 +1,4 @@
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 #import "../utils/invisible-heading.typ": invisible-heading
 
 #let acknowledgement(
@@ -19,14 +19,21 @@
   // 2.  正式渲染
   pagebreak(weak: true, to: if twoside { "odd" })
 
-  invisible-heading(level: 1, outlined: outlined, [#outline-title#metadata((en: outline-title-en))])
+  invisible-heading(level: 1, outlined: outlined, [#outline-title#metadata((
+      en: outline-title-en,
+    ))])
 
   v(spacing)
   align(center, text(size: 字号.小三, font: fonts.黑体)[致#h(1.5em)谢])
   v(spacing * 2)
 
   [
-    #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: leading, spacing: spacing)
+    #set par(
+      justify: true,
+      first-line-indent: (amount: 2em, all: true),
+      leading: leading,
+      spacing: spacing,
+    )
     #set text(size: 字号.小四, font: fonts.宋体)
 
     #body

@@ -1,5 +1,5 @@
 #import "../utils/datetime-display.typ": datetime-display-full
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 
 // 本科生封面
 #let bachelor-cover(
@@ -62,9 +62,16 @@
   v(3em)
 
   // 将中文之间的空格间隙从 0.25em 调整到 1em
-  text(size: 字号.小二, font: fonts.宋体, spacing: 400%, weight: "bold")[本 科 毕 业 #if isdesign [设 计] else [论 文]]
+  text(
+    size: 字号.小二,
+    font: fonts.宋体,
+    spacing: 400%,
+    weight: "bold",
+  )[本 科 毕 业 #if isdesign [设 计] else [论 文]]
   v(0pt)
-  if isminor { text(size: 字号.三号, font: fonts.宋体, weight: "bold")[（辅修）] }
+  if isminor {
+    text(size: 字号.三号, font: fonts.宋体, weight: "bold")[（辅修）]
+  }
 
   v(2em)
 
@@ -72,7 +79,12 @@
 
   v(1em)
 
-  text(size: 字号.三号, font: fonts.宋体, info.title-en.join("\n"), weight: "bold")
+  text(
+    size: 字号.三号,
+    font: fonts.宋体,
+    info.title-en.join("\n"),
+    weight: "bold",
+  )
 
   v(2em)
 
@@ -90,7 +102,8 @@
       info-key-short("专业"), info.major,
       info-key-short("年级"), info.grade + "级",
       info-key-long("校内指导老师"), info.supervisor.join(" "),
-      info-key-long("校外指导老师"), if info.supervisor-outside != () { info.supervisor-outside.join(" ") },
+      info-key-long("校外指导老师"),
+      if info.supervisor-outside != () { info.supervisor-outside.join(" ") },
     ),
   )
 

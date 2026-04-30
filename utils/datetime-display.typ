@@ -8,7 +8,10 @@
 // 显示全中文日期
 #let datetime-display-full(date) = {
   let cap-nums = "〇一二三四五六七八九".codepoints()
-  str(date.year()).codepoints().map(n => cap-nums.at(n.to-unicode() - 48)).join()
+  str(date.year())
+    .codepoints()
+    .map(n => cap-nums.at(n.to-unicode() - 48))
+    .join()
   "年"
   numbering("一", date.month())
   "月"

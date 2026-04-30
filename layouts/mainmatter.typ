@@ -1,7 +1,7 @@
 #import "@preview/i-figured:0.2.4"
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/hydra:0.6.1": hydra
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 #import "../utils/unpairs.typ": unpairs
 
 #let mainmatter(
@@ -116,13 +116,20 @@
       font: array-at(heading-font, it.level),
       size: array-at(heading-size, it.level),
       weight: array-at(heading-weight, it.level),
-      ..unpairs(heading-text-args-lists.map(pair => (pair.at(0), array-at(pair.at(1), it.level)))),
+      ..unpairs(heading-text-args-lists.map(pair => (
+        pair.at(0),
+        array-at(pair.at(1), it.level),
+      ))),
     )
     set block(
       above: array-at(heading-above, it.level),
       below: array-at(heading-below, it.level),
     )
-    if it.level == 1 and it.numbering != none and counter(heading).display(it.numbering) != none {
+    if (
+      it.level == 1
+        and it.numbering != none
+        and counter(heading).display(it.numbering) != none
+    ) {
       block({
         counter(heading).display(it.numbering)
         h(2em)
@@ -154,27 +161,25 @@
   }
 
   // 5.  页眉配置
-  set page(
-    header: {
-      // 重置 footnote 计数器
-      if reset-footnote {
-        counter(footnote).update(0)
-      }
-      context {
-        set text(font: fonts.宋体, size: 字号.小五)
-        align(
-          center,
-          if calc.odd(here().page()) {
-            hydra(skip-starting: false, use-last: true, 1)
-          } else {
-            info.title.join()
-          },
-        )
-      }
-      // 分隔线
-      place(bottom, dy: 0.35em, line(length: 100%, stroke: 0.5pt))
-    },
-  )
+  set page(header: {
+    // 重置 footnote 计数器
+    if reset-footnote {
+      counter(footnote).update(0)
+    }
+    context {
+      set text(font: fonts.宋体, size: 字号.小五)
+      align(
+        center,
+        if calc.odd(here().page()) {
+          hydra(skip-starting: false, use-last: true, 1)
+        } else {
+          info.title.join()
+        },
+      )
+    }
+    // 分隔线
+    place(bottom, dy: 0.35em, line(length: 100%, stroke: 0.5pt))
+  })
 
   set page(
     numbering: "1",

@@ -1,4 +1,4 @@
-#import "../utils/style.typ": 字号, 字体
+#import "../utils/style.typ": 字体, 字号
 
 // 本科生诚信承诺书页
 #let bachelor-integrity(twoside: false, fonts: (:)) = {
@@ -10,13 +10,23 @@
 
   set page(margin: (x: 3cm, top: 2.5cm, bottom: 2cm))
 
-  align(center, text(font: fonts.宋体, size: 字号.三号, weight: "bold", "厦门大学本科学位论文诚信承诺书"))
+  align(center, text(
+    font: fonts.宋体,
+    size: 字号.三号,
+    weight: "bold",
+    "厦门大学本科学位论文诚信承诺书",
+  ))
 
   v(3em)
 
   block[
     #set text(font: fonts.宋体, size: 字号.四号)
-    #set par(justify: true, first-line-indent: (amount: 2em, all: true), leading: 1.5em, spacing: 1.5em)
+    #set par(
+      justify: true,
+      first-line-indent: (amount: 2em, all: true),
+      leading: 1.5em,
+      spacing: 1.5em,
+    )
 
     本人呈交的学位论文是在导师指导下独立完成的研究成果。本人在论文写作中参考其他个人或集体已经发表的研究成果，均在文中以适当方式
     明确标明，并符合相关法律规范及《厦门大学本科毕业论文（设计）规范》。
