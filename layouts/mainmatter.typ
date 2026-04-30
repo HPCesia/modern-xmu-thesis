@@ -177,6 +177,7 @@
   )
 
   set page(
+    numbering: "1",
     footer: context {
       set text(font: fonts.宋体, size: 字号.小五)
       align(center, counter(page).display("1"))
