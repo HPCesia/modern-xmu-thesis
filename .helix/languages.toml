@@ -1,0 +1,8 @@
+[language-server.tinymist.config]
+formatterIndentSize = 2
+formatterMode = 'typstyle'
+typstExtraArgs = ["template/thesis.typ"]
+
+[language-server.tinymist.config.preview.background]
+args = ['--data-plane-host=127.0.0.1:0', '--invert-colors=never', '--open']
+enabled = true
